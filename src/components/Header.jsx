@@ -1,33 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import Header from "./Header";
-import ToyForm from "./ToyForm";
-import ToyContainer from "./ToyContainer";
-
-function App() {
-  const [showForm, setShowForm] = useState(false);
-  const [toys, setToys] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3001/toys")
-      .then((response) => response.json())
-      .then((data) => setToys(data));
-  }, []);
-
-  function handleClick() {
-    setShowForm((showForm) => !showForm);
-  }
-
+function Header() {
   return (
-    <>
-      <Header />
-      {showForm ? <ToyForm /> : null}
-      <div className="buttonContainer">
-        <button onClick={handleClick}>Add a Toy</button>
-      </div>
-      <ToyContainer toys={toys} />
-    </>
+    <div id="toy-header">
+      <img
+        src="https://fontmeme.com/permalink/180719/67429e6afec53d21d64643101c43f029.png"
+        alt="toy header"
+      />
+    </div>
   );
 }
 
-export default App;
+export default Header;
